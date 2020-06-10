@@ -1,5 +1,4 @@
-# A simple tool to proxy apis
-
+# A simple tool to proxy an API without CORS
 ## Setup
 
 With npm:
