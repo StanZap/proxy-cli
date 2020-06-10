@@ -1,7 +1,7 @@
 {
   "name": "xproxy-cli",
-  "version": "0.1.2",
-  "description": "",
+  "version": "0.1.3",
+  "description": "A simple tool to proxy api",
   "main": "cli.js",
   "scripts": {
     "start": "node . https://google.com"
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StanZap/xproxy-cli.git"
+    "url": "https://github.com/StanZap/xproxy-cli.git"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
