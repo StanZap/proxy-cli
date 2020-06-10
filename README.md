@@ -4,7 +4,7 @@
 
 With npm:
 ```sh
-npm install xproxy-cli // or npm i -g xproxy-cli
+npm install -D xproxy-cli // or npm i -g xproxy-cli
 ```
 
 With yarn:
