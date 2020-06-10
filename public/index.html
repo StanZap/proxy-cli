@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script>
+      let data = { email: "stan100@mobabeast.com" };
+      let host = "http://localhost:8002";
+      // let host = "https://qctest.phpfox.us";
+      // let url = host + "/restful_api/mobile/feed?limit=10";
+      // fetch(`${host}/sffekko/index.php/mobile/token`, {
+      // fetch(`${url}`, {
+      //   body: JSON.stringify(data),
+      //   method: "POST",
+      //   // mode: "no-cors",
+      // }).then((data) => console.log(data));
+      // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+
+      const tokenSignUpUrl = host + "/sffekko/index.php/mobile/token";
+      console.log("Response: ");  
+      axios
+        .post(tokenSignUpUrl, {
+          client_id: "mobileapi",
+          client_secret: "738ab5b83c902a7b81860e05811fd5cd65e95f72",
+          grant_type: "client_credentials",
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    </script>
+  </body>
+</html>
