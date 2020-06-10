@@ -1,16 +1,52 @@
 #!/usr/bin/env node
-
+const commandLineArgs = require("command-line-args");
 const express = require("express");
 const request = require("request-promise");
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
+const usage = require("./help");
+
+// Check params first
+const optionDefinitions = [
+  {
+    name: "to",
+    alias: "t",
+    type: String,
+    multiple: false,
+    defaultOption: true,
+    defaultValue: process.env.XPROXY_TO,
+  },
+
+  {
+    name: "port",
+    alias: "p",
+    type: String,
+    multiple: false,
+    defaultValue: process.env.XPROXY_PORT || "8002",
+  },
+  {
+    name: "help",
+    alias: "h",
+  },
+];
+
+const opts = commandLineArgs(optionDefinitions);
+
+if (typeof opts.help === "object") {
+  usage();
+  return -1;
+}
+
+if (!opts.to) {
+  console.log(
+    "You should provide either the --to (-t) param or define an XPROXY_TO environment variable."
+  );
+  return -1;
+}
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-const host = process.env.REMOTE_HOST || "https://localhost";
-const port = process.env.PORT || 8002;
 
 app.use(async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -47,4 +83,6 @@ app.use(async (req, res, next) => {
   }
 });
 
-app.listen(port, () => console.log(`Proxing port ${port} to ${host}`));
+app.listen(opts.port, () =>
+  console.log(`Proxing port ${opts.port} to ${opts.to}`)
+);
