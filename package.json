@@ -7,8 +7,8 @@
     "start": "node . https://google.com"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Stanley Zapata",
+  "license": "MIT",
   "bin": {
     "xproxy-cli": "./cli.js"
   },
