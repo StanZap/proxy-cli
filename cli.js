@@ -1,35 +1,9 @@
 #!/usr/bin/env node
-const commandLineArgs = require("command-line-args");
 const express = require("express");
 const request = require("request-promise");
 const bodyParser = require("body-parser");
 const usage = require("./help");
-
-// Check params first
-const optionDefinitions = [
-  {
-    name: "to",
-    alias: "t",
-    type: String,
-    multiple: false,
-    defaultOption: true,
-    defaultValue: process.env.XPROXY_TO,
-  },
-
-  {
-    name: "port",
-    alias: "p",
-    type: String,
-    multiple: false,
-    defaultValue: process.env.XPROXY_PORT || "8002",
-  },
-  {
-    name: "help",
-    alias: "h",
-  },
-];
-
-const opts = commandLineArgs(optionDefinitions);
+const opts = require("./params");
 
 if (typeof opts.help === "object") {
   usage();
@@ -55,7 +29,7 @@ app.use(async (req, res, next) => {
 
   const reqBody = {
     method: req.method,
-    uri: host + req.path,
+    uri: opts.to + req.path,
     json: true,
   };
 
