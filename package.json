@@ -18,7 +18,7 @@
     "url": "https://github.com/StanZap/xproxy-cli.git"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
